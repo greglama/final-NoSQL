@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+
 
 const ip = "mongodb://localhost/";
 const db = "DBComp"
@@ -17,6 +19,8 @@ const http = require('http');
 const app = express();
 
 app.set('port', 8080);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 var server = http.createServer(app);
 app.use(express.static('public'))
@@ -31,9 +35,41 @@ app.get('/login', (req, res) => {
   res.sendFile('public/login.html' , { root : __dirname});
 })
 
-app.post('/query/:nbReq', (req, res) => {
-  let queryNmbr = req.params.nbReq
-  let queryRes = ""
+app.post('/customquery', (req, res) => {
+  let queryNmbr = req.body.query
+  switch(queryNmbr) {
+
+    case "1":
+      var nmbrOfEmployees = parseInt(req.body.nbEmp)
+      var resLimit = parseInt(req.body.limit)
+
+      company.aggregate([{$match: {number_of_employees: {$gt: nmbrOfEmployees}}}, 
+          {$project: {number_of_employees: 1, name: 1}}, 
+          {$sort: {number_of_employees: -1}}, 
+          {$limit: resLimit}])
+        .exec(function (err, result) {
+          if (err) return handleError(err);
+          res.json(result)
+      });
+      break;
+
+    case "2":
+      var year = 2000
+      company.aggregate([{$match: {founded_year: {$lt: year}}}, 
+        {$match: {providerships: {$size:2}}}, 
+        {$project: {founded_year: 1, providerships: 1}}, 
+        {$limit: 10}])
+        .exec(function (err, result) {
+          if (err) return handleError(err);
+          res.json(result)
+      });
+      break;
+  }
+  
+})
+
+app.post('/query', (req, res) => {
+  let queryNmbr = req.body.query
   switch(queryNmbr) {
 
     case "1":
