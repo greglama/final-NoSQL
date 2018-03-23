@@ -157,6 +157,28 @@ app.post('/query', (req, res) => {
   }
   
 })
+//----------------Function---------------
+const paramSpliter = "...";
+
+const parseQuerry = (query, params) =>{
+    const arrayQuerry = query.split(paramSpliter);
+
+    let finalQuery = "";
+
+    for(let i = 0; i < arrayQuerry.length + params.length; i++)
+    {
+        if (i%2 == 0)
+        {
+            finalQuery += arrayQuerry[parseInt(i/2)];
+        }
+        else
+        {
+            finalQuery += params[parseInt(i/2)];
+        }
+    }
+
+    return JSON.parse(finalQuery);
+}
 
 /**
  * Event listener for HTTP server "listening" event.
