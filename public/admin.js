@@ -1,11 +1,18 @@
 $("#submit").click(function(){
-      let name = $('#queryTextArea').val();
-      console.log(name)
-      $.post("/saveQuery", name, (res) => {
-            console.log(res);
-      })
+      let query = $('#queryTextArea').val();
+      $.ajax({
+            type: "POST",
+            url: "/saveQuery",
+            data: {"query":query},
+            success: success,
+            dataType: "application/json"
+          });
       $('#queryTextArea').val("")
 })
+
+function success(res){
+      console.log(res);
+}
 
 $('#home').click(function(){
       window.location = "../";

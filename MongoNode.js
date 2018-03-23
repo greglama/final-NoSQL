@@ -45,13 +45,19 @@ app.get('/login', (req, res) => {
   res.sendFile('public/login.html' , { root : __dirname});
 })
 
+app.get('/getQueries', (req, res) =>{
+  queryModel.find(function (err, kittens) {
+    if (err) return console.error(err);
+    res.json(kittens);  
+  })
+})
+
 app.get('/admin', (req, res) =>{
   res.sendFile('public/admin.html', {root : __dirname})
 })
 
 //-----------------------END POINTS--------------------------
-app.post("/saveQuery", (req, res) =>{
-
+app.post("/saveQuery", (req, res) =>{;
   const data = [{"query":req.body.query}];
 
   queryModel.collection.insertMany(data, function(err,r) {});
