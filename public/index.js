@@ -1,41 +1,47 @@
 $('#query1').click(function(){
 	$.post("/query", {query: 1}, (res) => {
-		wrapper =  document.getElementById("result_request_1");
+		$("#result_request").empty();
+		wrapper =  document.getElementById("result_request");
 		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query2').click(function(){
 	$.post("/query", {query: 2}, (res) => {
-	    wrapper =  document.getElementById("result_request_2");
+		$("#result_request").empty();
+	    wrapper =  document.getElementById("result_request");
 		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query3').click(function(){
 	$.post("/query", {query: 3}, (res) => {
-	    wrapper =  document.getElementById("result_request_3");
+		$("#result_request").empty();
+	    wrapper =  document.getElementById("result_request");
 		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query4').click(function(){
 	$.post("/query", {query: 4}, (res) => {
-	    wrapper =  document.getElementById("result_request_4");
+		$("#result_request").empty();
+	    wrapper =  document.getElementById("result_request");
 		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query5').click(function(){
 	$.post("/query", {query: 5}, (res) => {
-	    wrapper =  document.getElementById("result_request_5");
+		$("#result_request").empty();
+	    wrapper =  document.getElementById("result_request");
 		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query6').click(function(){
 	$.post("/query", {query: 6}, (res) => {
-	    wrapper =  document.getElementById("result_request_6");
+		$("#result_request").empty();
+	    wrapper =  document.getElementById("result_request");
 		var tree = jsonTree.create(res, wrapper);
 	})
 })
@@ -45,7 +51,8 @@ $('#sendCustomQuery1').click(function(e){
 	var limit = $('#limit').val()
 
 	$.post("/customquery", {query: 1, nbEmp: nbEmp, limit: limit}, (res) => {
-	    wrapper =  document.getElementById("result_request_custom_1");
+		$("#result_request").empty();
+	    wrapper =  document.getElementById("result_request");
 		var tree = jsonTree.create(res, wrapper);
 	})
 })
