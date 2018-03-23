@@ -44,7 +44,6 @@ app.post('/query/:nbReq', (req, res) => {
       var nbProducts = 3
       company.find({ $where: "this.products.length > " + nbProducts }).limit(10).exec(function (err, result) {
         if (err) return handleError(err);
-        console.log(result)
         res.json(result)
       });
       break;

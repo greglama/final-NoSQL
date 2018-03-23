@@ -1,42 +1,42 @@
 $('#query1').click(function(){
 	$.post("/query/1", (res) => {
-		console.log(res);
-		ShowTree(res, document.getElementById("result_request_1"));
+		wrapper =  document.getElementById("result_request_1");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query2').click(function(){
 	$.post("/query/2", (res) => {
-	    console.log(res);
-	    ShowTree(res, document.getElementById("result_request_2"));
+	    wrapper =  document.getElementById("result_request_2");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query3').click(function(){
 	$.post("/query/3", (res) => {
-	    console.log(res);
-	    ShowTree(res, document.getElementById("result_request_3"));
+	    wrapper =  document.getElementById("result_request_3");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query4').click(function(){
 	$.post("/query/4", (res) => {
-	    console.log(res);
-	    ShowTree(res, document.getElementById("result_request_4"));
+	    wrapper =  document.getElementById("result_request_4");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query5').click(function(){
 	$.post("/query/5", (res) => {
-	    console.log(res);
-	    ShowTree(res, document.getElementById("result_request_5"));
+	    wrapper =  document.getElementById("result_request_5");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query6').click(function(){
 	$.post("/query/6", (res) => {
-	    console.log(res);
-		ShowTree(res, document.getElementById("result_request_6"));
+	    wrapper =  document.getElementById("result_request_6");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
