@@ -31,6 +31,10 @@ app.get('/login', (req, res) => {
   res.sendFile('public/login.html' , { root : __dirname});
 })
 
+app.get('/admin', (req, res) =>{
+  res.sendFile('public/admin.html', {root : __dirname})
+})
+
 app.post('/query/:nbReq', (req, res) => {
   let queryNmbr = req.params.nbReq
   let queryRes = ""

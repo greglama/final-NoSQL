@@ -5,7 +5,7 @@ $('.message a').click(function(){
 $('#submitButton').click(function(){
       let name = $('#textBar').val();
       let pass = $('#passwordBar').val();
-      $.post("/login", name + "," + pass, (res) => {
-            console.log(res);
-      })
+      if(name === "Admin" && pass === "admin"){
+            window.location = "../admin";
+      }
 })
