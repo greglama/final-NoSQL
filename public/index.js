@@ -1,6 +1,5 @@
 $('#query1').click(function(){
 	$.post("/query/1", (res) => {
-		console.log(res);
 		wrapper =  document.getElementById("result_request_1");
 		var tree = jsonTree.create(res, wrapper);
 	})
@@ -8,35 +7,35 @@ $('#query1').click(function(){
 
 $('#query2').click(function(){
 	$.post("/query/2", (res) => {
-	    console.log(res);
-	    $("#result_request_2").text(res)
+	    wrapper =  document.getElementById("result_request_2");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query3').click(function(){
 	$.post("/query/3", (res) => {
-	    console.log(res);
-	    $("#result_request_3").text(res)
+	    wrapper =  document.getElementById("result_request_3");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query4').click(function(){
 	$.post("/query/4", (res) => {
-	    console.log(res);
-	    $("#result_request_4").text(res)
+	    wrapper =  document.getElementById("result_request_4");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query5').click(function(){
 	$.post("/query/5", (res) => {
-	    console.log(res);
-	    $("#result_request_5").text(res)
+	    wrapper =  document.getElementById("result_request_5");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
 
 $('#query6').click(function(){
 	$.post("/query/6", (res) => {
-	    console.log(res);
-	    $("#result_request_6").text(res)
+	    wrapper =  document.getElementById("result_request_6");
+		var tree = jsonTree.create(res, wrapper);
 	})
 })
