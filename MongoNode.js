@@ -1,9 +1,18 @@
 const express = require("express");
 const mongoose = require('mongoose');
+const bodyParser = require("body-parser");
 
 const ip = "mongodb://localhost/";
 const db = "DBComp"
 const collection = "companies";
+
+const savedQueryCollection = "savedqueries";
+let savedQuerySchema = mongoose.Schema({
+  query:String
+});
+
+let queryModel = mongoose.model(savedQueryCollection, savedQuerySchema);
+
 
 mongoose.connect(ip+db);
 let companySchema = mongoose.Schema({
@@ -15,6 +24,9 @@ let query = "";
 
 const http = require('http');
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('port', 8080);
 
@@ -34,6 +46,15 @@ app.get('/login', (req, res) => {
 app.get('/admin', (req, res) =>{
   res.sendFile('public/admin.html', {root : __dirname})
 })
+
+//-----------------------END POINTS--------------------------
+app.post("/saveQuery", (req, res) =>{
+
+  const data = [{"query":req.body.query}];
+
+  queryModel.collection.insertMany(data, function(err,r) {});
+  res.send("Query has been insert with success !");
+});
 
 app.post('/query/:nbReq', (req, res) => {
   let queryNmbr = req.params.nbReq
