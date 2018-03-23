@@ -40,6 +40,7 @@ $('#query6').click(function(){
 	})
 })
 
+<<<<<<< HEAD
 $('#sendCustomQuery1').click(function(e){
 	var nbEmp = $('#nbEmployees').val()
 	var limit = $('#limit').val()
@@ -49,3 +50,8 @@ $('#sendCustomQuery1').click(function(e){
 		var tree = jsonTree.create(res, wrapper);
 	})
 })
+=======
+function ShowTree(json, elem){
+	var tree = jsonTree.create(json, elem);
+}
+>>>>>>> 7cf0ab9c95d68a411d6d00c51cb46eff65e97964

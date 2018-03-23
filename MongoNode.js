@@ -35,6 +35,7 @@ app.get('/login', (req, res) => {
   res.sendFile('public/login.html' , { root : __dirname});
 })
 
+<<<<<<< HEAD
 app.post('/customquery', (req, res) => {
   let queryNmbr = req.body.query
   switch(queryNmbr) {
@@ -70,6 +71,15 @@ app.post('/customquery', (req, res) => {
 
 app.post('/query', (req, res) => {
   let queryNmbr = req.body.query
+=======
+app.get('/admin', (req, res) =>{
+  res.sendFile('public/admin.html', {root : __dirname})
+})
+
+app.post('/query/:nbReq', (req, res) => {
+  let queryNmbr = req.params.nbReq
+  let queryRes = ""
+>>>>>>> 7cf0ab9c95d68a411d6d00c51cb46eff65e97964
   switch(queryNmbr) {
 
     case "1":
