@@ -1,0 +1,3 @@
+[submodule "public/jsonTree"]
+	path = public/jsonTree
+	url = https://github.com/summerstyle/jsonTreeViewer.git

@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 
 const ip = "mongodb://localhost/";
-const db = "DBLP"
+const db = "DBComp"
 const collection = "companies";
 
 mongoose.connect(ip+db);
