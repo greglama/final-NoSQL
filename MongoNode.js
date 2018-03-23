@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 
 const ip = "mongodb://localhost/";
-const db = "DBComp"
+const db = "DBLP"
 const collection = "companies";
 
 mongoose.connect(ip+db);
@@ -27,9 +27,12 @@ app.get('/', (req, res) => {
   res.sendFile('index.html');
 })
 
-app.get('/query', (req, res) => {
-  let queryNmbr = req.query.query
-  console.log(queryNmbr)
+app.get('/login', (req, res) => {
+  res.sendFile('public/login.html' , { root : __dirname});
+})
+
+app.post('/query/:nbReq', (req, res) => {
+  let queryNmbr = req.params.nbReq
   let queryRes = ""
   switch(queryNmbr) {
 
@@ -37,6 +40,7 @@ app.get('/query', (req, res) => {
       var nbProducts = 3
       company.find({ $where: "this.products.length > " + nbProducts }).limit(10).exec(function (err, result) {
         if (err) return handleError(err);
+        console.log(result)
         res.json(result)
       });
       break;

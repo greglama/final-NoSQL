@@ -1,7 +1,8 @@
-function query(){
-    
-    $.get( "/query", function( data ) {
-        console.log(data)
-        $('.table').text("Data Loaded: " + data);
-      });
-}
+
+$('#query1').click(function(){
+	$.post("/query/1", (res) => {
+	    console.log(res);
+	    $("#result_request_1").text(res)
+	})
+	
+})
