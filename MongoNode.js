@@ -212,6 +212,26 @@ const parseQuery = (query, params) =>{
     return JSON.parse(finalQuery);
 }
 
+const executeParsedQuery = async (parsedQuery) =>
+{
+  try{
+    const result = await company.aggregate(parsedQuery).exec();
+    return result;
+  }
+  catch(err){
+    console.log(err);
+    return err;
+  }
+}
+
+/*const TEST_FUNCTION = async () =>{
+  const query = "[{\"$match\": {\"founded_year\": {\"$lt\": ???}}},{\"$match\": {\"providerships\": {\"$size\":2}}},{\"$project\": {\"founded_year\": 1, \"providerships\": 1}},{\"$limit\": 10}]"
+  const parsedQuery = parseQuery(query, [2000]);
+  
+  return await executeParsedQuery(parsedQuery);
+}*/
+
+
 /**
  * Event listener for HTTP sever "listening" event.
  */
@@ -223,6 +243,6 @@ async function onListening() {
     : 'port ' + addr.port;
   console.log('Listening on ' + bind);
 
-  const data = await TEST_FUNCTION();
-  console.log(data);
+  //const data = await TEST_FUNCTION();
+  //console.log(data);
 }
