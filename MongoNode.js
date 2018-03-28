@@ -58,10 +58,16 @@ app.get('/admin', (req, res) =>{
 
 //-----------------------END POINTS--------------------------
 app.post("/saveQuery", (req, res) =>{;
-  const data = [{"query":req.body.query}];
-
-  queryModel.collection.insertMany(data, function(err,r) {});
-  res.send("Query has been insert with success !");
+  if(req.body.query !== null && req.body.query !== "") {
+    const data = [{"query":req.body.query}];
+  
+    queryModel.collection.insertMany(data, function(err,r) {});
+    res.send("Query has been insert with success !");
+  }
+  else
+  {
+    res.send("Query insert failed !");
+  }
 });
 
 app.post('/customquery', (req, res) => {
@@ -158,6 +164,18 @@ app.post('/query', (req, res) => {
       break;
 
     case "5":
+      var year = 2000
+      company.aggregate([{$match: {founded_year: {$lt: year}}}, 
+        {$match: {providerships: {$size:2}}}, 
+        {$project: {founded_year: 1, providerships: 1}}, 
+        {$limit: 10}])
+        .exec(function (err, result) {
+          if (err) return handleError(err);
+          res.json(result)
+      });
+      break;
+
+      case "6":
       var year = 2000
       company.aggregate([{$match: {founded_year: {$lt: year}}}, 
         {$match: {providerships: {$size:2}}}, 
