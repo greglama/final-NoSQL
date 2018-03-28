@@ -190,10 +190,10 @@ app.post('/query', (req, res) => {
   
 })
 //----------------Function---------------
-const paramSpliter = "...";
+const PARAM_SPLITER = "???";
 
-const parseQuerry = (query, params) =>{
-    const arrayQuerry = query.split(paramSpliter);
+const parseQuery = (query, params) =>{
+    const arrayQuerry = query.split(PARAM_SPLITER);
 
     let finalQuery = "";
 
@@ -213,14 +213,16 @@ const parseQuerry = (query, params) =>{
 }
 
 /**
- * Event listener for HTTP server "listening" event.
+ * Event listener for HTTP sever "listening" event.
  */
 
-function onListening() {
+async function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   console.log('Listening on ' + bind);
-}
 
+  const data = await TEST_FUNCTION();
+  console.log(data);
+}
