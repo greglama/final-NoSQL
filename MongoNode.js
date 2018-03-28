@@ -154,6 +154,18 @@ app.post('/query', (req, res) => {
           res.json(result)
       });
       break;
+
+      case "6":
+      var year = 2000
+      company.aggregate([{$match: {founded_year: {$lt: year}}}, 
+        {$match: {providerships: {$size:2}}}, 
+        {$project: {founded_year: 1, providerships: 1}}, 
+        {$limit: 10}])
+        .exec(function (err, result) {
+          if (err) return handleError(err);
+          res.json(result)
+      });
+      break;
   }
   
 })
