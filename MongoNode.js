@@ -58,10 +58,16 @@ app.get('/admin', (req, res) =>{
 
 //-----------------------END POINTS--------------------------
 app.post("/saveQuery", (req, res) =>{;
-  const data = [{"query":req.body.query}];
-
-  queryModel.collection.insertMany(data, function(err,r) {});
-  res.send("Query has been insert with success !");
+  if(req.body.query !== null && req.body.query !== "") {
+    const data = [{"query":req.body.query}];
+  
+    queryModel.collection.insertMany(data, function(err,r) {});
+    res.send("Query has been insert with success !");
+  }
+  else
+  {
+    res.send("Query insert failed !");
+  }
 });
 
 app.post('/customquery', (req, res) => {
