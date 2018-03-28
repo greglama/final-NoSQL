@@ -24,6 +24,8 @@
 
     <!-- Custom styles for this template -->
     <link href="css/freelancer.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+
 
   </head>
 
@@ -115,55 +117,98 @@
       <div class="container">
         <h2 class="text-center text-uppercase text-white">Customize your queries</h2>
         <hr class="star-light mb-5">
-        <div class="row">
-           <div class="col-lg-4 mx-auto">
-            <form name="customeQuery1" id="customeQuery1" novalidate="novalidate">
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Number of employees</label>
-                  <input class="form-control" id="nbEmployees" type="number" placeholder="Number of employees" required="required" data-validation-required-message="Please enter the number of employees.">
+
+        <ul class="nav nav-tabs nav-justified">
+          <li class="active col-lg-1 col-lg-offset-2"><a data-toggle="tab" href="#queryCustom1">Query 1</a></li>
+          <li class="col-lg-1 col-lg-offset-1"><a data-toggle="tab" href="#queryCustom2">Query 2</a></li>
+          <li class="col-lg-1 col-lg-offset-1"><a data-toggle="tab" href="#queryCustom5">Query 5</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="queryCustom1" class="tab-pane fade in active">
+            <h3>Customize Query 1</h3>
+            <p> Get the companies with minimum a given number of products </p>
+            <div class="col-lg-4 ">
+              <form name="customeQuery1" id="customeQuery1" novalidate="novalidate">
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Number of products</label>
+                    <input class="form-control" id="nbProducts" type="number" placeholder="Number of products" required="required" data-validation-required-message="Please enter the number of products.">
+                  </div>
                 </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Results limit</label>
-                  <input class="form-control" id="limit" type="number" placeholder="Results limit" required="required" data-validation-required-message="Please enter the results limit.">
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Results limit</label>
+                    <input class="form-control" id="limit1" type="number" placeholder="Results limit" required="required" data-validation-required-message="Please enter the results limit.">
+                  </div>
                 </div>
-              </div>
-              <br>
-              <div class="form-group">
-                <a class="btn btn-xl btn-outline-light portfolio-item" id="sendCustomQuery1" href="#portfolio-modal">Execute</a>
-              </div>
-            </form>
+                <br>
+                <div class="form-group">
+                  <a class="btn btn-xl btn-outline-light portfolio-item" id="sendCustomQuery1" href="#portfolio-modal">Execute</a>
+                </div>
+              </form>
+            </div>
+            
           </div>
 
-          <div class="col-lg-4 mx-auto">
-            <form name="customeQuery2" id="customeQuery2" novalidate="novalidate">
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Name</label>
-                  <input class="form-control" id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name.">
+          <div id="queryCustom2" class="tab-pane fade">
+            <h3>Customize Query 2</h3>
+            <p> Get the companies with minimum a given number of employees </p>
+            <div class="col-lg-4 ">
+              <form name="customeQuery2" id="customeQuery2" novalidate="novalidate">
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Number of employees</label>
+                    <input class="form-control" id="nbEmployees" type="number" placeholder="Number of employees" required="required" data-validation-required-message="Please enter the number of employees.">
+                  </div>
                 </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Email Address</label>
-                  <input class="form-control" id="email" type="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address.">
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Results limit</label>
+                    <input class="form-control" id="limit2" type="number" placeholder="Results limit" required="required" data-validation-required-message="Please enter the results limit.">
+                  </div>
                 </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Phone Number</label>
-                  <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number.">
+                <br>
+                <div class="form-group">
+                  <a class="btn btn-xl btn-outline-light portfolio-item" id="sendCustomQuery2" href="#portfolio-modal">Execute</a>
                 </div>
-              </div>
-              <br>
-              <div class="form-group">
-                <button type="submit" class="btn btn-xl btn-outline-light" id="sendMessageButton">Execute</button>
-              </div>
-            </form>
+              </form>
+            </div>
+          </div>
+
+          <div id="queryCustom5" class="tab-pane fade">
+            <h3>Customize Query 5</h3>
+            <p> Get the name of companies which were created before a given year and have more than a given number of providers </p>
+            <div class="col-lg-4 ">
+              <form name="customeQuery5" id="customeQuery5" novalidate="novalidate">
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Year</label>
+                    <input class="form-control" id="year" type="number" placeholder="Year" required="required" data-validation-required-message="Please enter the year.">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Number of providers</label>
+                    <input class="form-control" id="nbProviders" type="number" placeholder="Number of providers" required="required" data-validation-required-message="Please enter the number of providers.">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Results limit</label>
+                    <input class="form-control" id="limit5" type="number" placeholder="Results limit" required="required" data-validation-required-message="Please enter the results limit.">
+                  </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <a class="btn btn-xl btn-outline-light portfolio-item" id="sendCustomQuery5" href="#portfolio-modal">Execute</a>
+                </div>
+              </form>
+            </div>
+
           </div>
         </div>
+
       </div>
     </section>
 
@@ -258,10 +303,6 @@
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.js"></script>

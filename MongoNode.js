@@ -69,6 +69,16 @@ app.post('/customquery', (req, res) => {
   switch(queryNmbr) {
 
     case "1":
+      var nbProducts = parseInt(req.body.nbProducts)
+      var resLimit = parseInt(req.body.limit)
+
+      company.find({ $where: "this.products.length > " + nbProducts }).limit(resLimit).exec(function (err, result) {
+        if (err) return handleError(err);
+        res.json(result)
+      });
+      break;
+
+    case "2":
       var nmbrOfEmployees = parseInt(req.body.nbEmp)
       var resLimit = parseInt(req.body.limit)
 
@@ -82,12 +92,15 @@ app.post('/customquery', (req, res) => {
       });
       break;
 
-    case "2":
-      var year = 2000
+    case "5":
+      var year = parseInt(req.body.year)
+      var nbProviders = parseInt(req.body.nbProviders)
+      var resLimit = parseInt(req.body.limit)
+
       company.aggregate([{$match: {founded_year: {$lt: year}}}, 
-        {$match: {providerships: {$size:2}}}, 
+        {$match: {providerships: {$size:nbProviders}}}, 
         {$project: {founded_year: 1, providerships: 1}}, 
-        {$limit: 10}])
+        {$limit: resLimit}])
         .exec(function (err, result) {
           if (err) return handleError(err);
           res.json(result)
@@ -96,6 +109,7 @@ app.post('/customquery', (req, res) => {
   }
   
 })
+
 
 app.post('/query', (req, res) => {
   let queryNmbr = req.body.query
