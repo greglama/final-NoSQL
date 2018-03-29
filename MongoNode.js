@@ -57,7 +57,23 @@ app.get('/admin', (req, res) =>{
 })
 
 //-----------------------END POINTS--------------------------
-app.post("/saveQuery", (req, res) =>{;
+app.post("/executeFullCustomQuery", (req, res) =>{
+  if(req.body.query !== null && req.body.query !== "") {
+    let query = req.body.query;
+    let parametersList = req.body.parametersList;
+
+    let params = parametersList.split(";").map(param => param.trim());
+    let finalQuery = parseQuery(query, params);
+
+    executeParsedQuery(finalQuery).then(result => res.json(result));
+  }
+  else
+  {
+    res.send("The sent query is empty");
+  }
+});
+
+app.post("/saveQuery", (req, res) =>{
   if(req.body.query !== null && req.body.query !== "") {
     const data = [{"query":req.body.query}];
   
@@ -115,7 +131,6 @@ app.post('/customquery', (req, res) => {
   }
   
 })
-
 
 app.post('/query', (req, res) => {
   let queryNmbr = req.body.query
@@ -224,25 +239,16 @@ const executeParsedQuery = async (parsedQuery) =>
   }
 }
 
-/*const TEST_FUNCTION = async () =>{
-  const query = "[{\"$match\": {\"founded_year\": {\"$lt\": ???}}},{\"$match\": {\"providerships\": {\"$size\":2}}},{\"$project\": {\"founded_year\": 1, \"providerships\": 1}},{\"$limit\": 10}]"
-  const parsedQuery = parseQuery(query, [2000]);
-  
-  return await executeParsedQuery(parsedQuery);
-}*/
-
 
 /**
  * Event listener for HTTP sever "listening" event.
  */
 
-async function onListening() {
+function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   console.log('Listening on ' + bind);
 
-  //const data = await TEST_FUNCTION();
-  //console.log(data);
 }
