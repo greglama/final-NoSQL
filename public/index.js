@@ -2,10 +2,13 @@ $( document ).ready(function() {
     $.get("/getQueries", (res) => {
     	var i = 0
 	    res.forEach(function(query){
-	    	$('#dropdownQueries').append($('<option>', {
-			    value: i++,
-			    text: query.query
-			}));
+			if(query.query != null && query.query != "")
+			{
+				$('#dropdownQueries').append($('<option>', {
+					value: i++,
+					text: query.query
+				}));
+			}
 	    })
 	})
 });
@@ -98,7 +101,7 @@ $('#sendCustomQuery5').click(function(e){
 $('#executeCustomQuery').click(function(e){
 	var query = $("#dropdownQueries option:selected").text();
 	var parametersList = $('#parametersList').val()
-
+	aler("Query has been sent")
 	$.post("/executeFullCustomQuery", {query: query, parametersList: parametersList}, (res) => {
 		$("#custom_result_request").empty();
 	    wrapper =  document.getElementById("custom_result_request");
