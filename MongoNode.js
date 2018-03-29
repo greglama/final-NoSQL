@@ -46,9 +46,9 @@ app.get('/login', (req, res) => {
 })
 
 app.get('/getQueries', (req, res) =>{
-  queryModel.find(function (err, kittens) {
+  queryModel.find(function (err, queries) {
     if (err) return console.error(err);
-    res.json(kittens);  
+    res.json(queries);  
   })
 })
 

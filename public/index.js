@@ -1,3 +1,17 @@
+$( document ).ready(function() {
+    $.get("/getQueries", (res) => {
+    	var i = 0
+	    res.forEach(function(query){
+	    	$('#dropdownQueries').append($('<option>', {
+			    value: i++,
+			    text: query.query
+			}));
+	    })
+	})
+});
+
+
+
 $('#query1').click(function(){
 	$.post("/query", {query: 1}, (res) => {
 		$("#result_request").empty();
@@ -82,7 +96,7 @@ $('#sendCustomQuery5').click(function(e){
 
 
 $('#executeCustomQuery').click(function(e){
-	var query = $('#usedCustomQuery').val()
+	var query = $("#dropdownQueries option:selected").text();
 	var parametersList = $('#parametersList').val()
 
 	$.post("/executeFullCustomQuery", {query: query, parametersList: parametersList}, (res) => {
