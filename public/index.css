@@ -2,14 +2,18 @@
       background-color: #ff0000;
 }
 
-#custom > div > ul > li > a {
+#customParam > div > ul > li > a {
 	color: white;
 }
 
-#custom > div > div.tab-content {
+#customParam > div > div.tab-content {
 	color: white;
 }
 
 #queryCustom1, #queryCustom2, #queryCustom5 {
 	margin-top: 20px;
+}
+
+.custom-button {
+	border: 1px solid #18BC9C;
 }

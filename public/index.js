@@ -80,6 +80,21 @@ $('#sendCustomQuery5').click(function(e){
 	})
 })
 
+
+$('#executeCustomQuery').click(function(e){
+	var query = $('#usedCustomQuery').val()
+	var parametersList = $('#parametersList').val()
+
+	$.post("/executeFullCustomQuery", {query: query, parametersList: parametersList}, (res) => {
+		$("#result_request").empty();
+	    wrapper =  document.getElementById("custom_result_request");
+		var tree = jsonTree.create(res, wrapper);
+	})
+})
+
+
+
+
 function ShowTree(json, elem){
 	var tree = jsonTree.create(json, elem);
 }
