@@ -177,10 +177,7 @@ app.post('/query', (req, res) => {
 
       case "6":
       var year = 2000
-      company.aggregate([{$match: {founded_year: {$lt: year}}}, 
-        {$match: {providerships: {$size:2}}}, 
-        {$project: {founded_year: 1, providerships: 1}}, 
-        {$limit: 10}])
+      company.aggregate([{$match: {}}, { $sort : { "number_of_employees" : -1} }, {$limit: 20}])
         .exec(function (err, result) {
           if (err) return handleError(err);
           res.json(result)
