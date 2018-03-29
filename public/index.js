@@ -101,7 +101,7 @@ $('#sendCustomQuery5').click(function(e){
 $('#executeCustomQuery').click(function(e){
 	var query = $("#dropdownQueries option:selected").text();
 	var parametersList = $('#parametersList').val()
-	aler("Query has been sent")
+	alert("Query has been sent")
 	$.post("/executeFullCustomQuery", {query: query, parametersList: parametersList}, (res) => {
 		$("#custom_result_request").empty();
 	    wrapper =  document.getElementById("custom_result_request");
