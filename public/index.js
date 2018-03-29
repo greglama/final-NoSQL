@@ -86,14 +86,11 @@ $('#executeCustomQuery').click(function(e){
 	var parametersList = $('#parametersList').val()
 
 	$.post("/executeFullCustomQuery", {query: query, parametersList: parametersList}, (res) => {
-		$("#result_request").empty();
+		$("#custom_result_request").empty();
 	    wrapper =  document.getElementById("custom_result_request");
 		var tree = jsonTree.create(res, wrapper);
 	})
 })
-
-
-
 
 function ShowTree(json, elem){
 	var tree = jsonTree.create(json, elem);
